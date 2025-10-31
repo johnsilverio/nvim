@@ -1,10 +1,11 @@
 # my neovim config
 
-![[Screenshot 2025-10-31 002540.png]]
+![Screenshot](./preview/Screenshot%202025-10-31%20002540.png)
 
 this is my custom neovim configuration, based on astro nvim, with full transparency, modern ui, and custom keybindings.
 
-![[Screenshot 2025-10-31 001556.png]]
+![Screenshot](./preview/Screenshot%202025-10-31%20001556.png)
+
 ## features
 - full window transparency
 - beautiful statusline and tabline
