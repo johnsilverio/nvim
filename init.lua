@@ -23,5 +23,14 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+-- Set shell to Git Bash on Windows
+if vim.fn.has("win32") == 1 then
+  -- Use quotes to handle spaces in path
+  vim.opt.shell = '"C:/Program Files/Git/bin/bash.exe"'
+  vim.opt.shellcmdflag = "-c"
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+end
+
 require "lazy_setup"
 require "polish"

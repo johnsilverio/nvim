@@ -110,13 +110,6 @@ return {
         callback = set_transparent_separators,
         desc = "Força divisórias transparentes após eventos de janela/tema",
       })
-      -- Cursor em bloco branco no normal, piscando no insert
-      vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:blinkwait700-blinkon400-blinkoff250-block-Cursor"
-      -- Remova qualquer highlight manual do grupo Cursor/lCursor
-      -- Se estiver usando Neovide ou Goneovim, pode definir highlight:
-      if vim.g.neovide or vim.g.goneovim then
-        vim.api.nvim_set_hl(0, "Cursor", { bg = "#ffffff", fg = "#222222" })
-      end
     end,
   },
 
