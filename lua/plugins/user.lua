@@ -3,13 +3,28 @@
 ---@type LazySpec
 return {
 
-  -- Cyberdream colorscheme with transparency
+  {
+    "RRethy/vim-illuminate",
+    opts = {
+      providers = { "lsp", "regex" },
+    },
+  },
+
+  -- Flexoki colorscheme (kepano/flexoki port)
+  {
+    "nuvic/flexoki-nvim",
+    name = "flexoki",
+    lazy = false,
+    priority = 1000,
+  },
+
+  -- Cyberdream colorscheme
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = false,
       italic_comments = true,
       hide_fillchars = false,
       borderless_pickers = true,
@@ -17,13 +32,11 @@ return {
     },
   },
 
-  -- Tokyo Dark colorscheme totalmente transparente
+  -- Tokyo Dark colorscheme (disponível, mas não default)
   {
     "tiagovla/tokyodark.nvim",
-    priority = 1000,
-    lazy = false,
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       gamma = 1.00,
       styles = {
         comments = { italic = true },
@@ -33,90 +46,23 @@ return {
         variables = { italic = true },
       },
       terminal_colors = true,
-      custom_highlights = function(highlights, palette)
-        local transparent = { bg = "NONE" }
-        local subtle_split = { fg = "#222222", bg = "NONE" }
-        return {
-          -- principais
-          Normal = transparent,
-          NormalNC = transparent,
-          SignColumn = transparent,
-          LineNr = transparent,
-          CursorLine = transparent,
-          CursorLineNr = transparent,
-          LineNrAbove = transparent,
-          LineNrBelow = transparent,
-          FoldColumn = transparent,
-          EndOfBuffer = transparent,
-          StatusLine = transparent,
-          StatusLineNC = transparent,
-          WinBar = transparent,
-          WinBarNC = transparent,
-          TabLine = transparent,
-          TabLineFill = transparent,
-          TabLineSel = transparent,
-          -- divisórias
-          WinSeparator = subtle_split,
-          VertSplit = subtle_split,
-          Separator = subtle_split,
-          -- Neo-tree
-          NeoTreeNormal = transparent,
-          NeoTreeNormalNC = transparent,
-          NeoTreeWinSeparator = subtle_split,
-          NeoTreeVertSplit = subtle_split,
-          NeoTreeFloatBorder = subtle_split,
-          NeoTreeEndOfBuffer = transparent,
-          -- Nvim-tree
-          NvimTreeNormal = transparent,
-          NvimTreeWinSeparator = subtle_split,
-          -- Bufferline
-          BufferLineSeparator = subtle_split,
-          BufferLineFill = transparent,
-          BufferLine = transparent,
-          -- Float/Popup
-          NormalFloat = transparent,
-          FloatBorder = subtle_split,
-          -- Terminal
-          TermNormal = transparent,
-          TermNormalNC = transparent,
-          TermCursor = transparent,
-        }
-      end,
     },
-    config = function(_, opts)
-      require("tokyodark").setup(opts)
-      vim.cmd [[colorscheme tokyodark]]
-      local function set_transparent_separators()
-        local subtle_split = { fg = "#222222", bg = "NONE" }
-        local transparent = { bg = "NONE" }
-        local groups_split = {
-          "WinSeparator", "VertSplit", "Separator",
-          "NeoTreeWinSeparator", "NeoTreeVertSplit", "NeoTreeFloatBorder",
-          "NvimTreeWinSeparator", "BufferLineSeparator", "FloatBorder"
-        }
-        for _, group in ipairs(groups_split) do
-          vim.api.nvim_set_hl(0, group, subtle_split)
-        end
-        local groups_transparent = {
-          "Normal", "NormalNC", "SignColumn", "LineNr", "CursorLine", "CursorLineNr", "LineNrAbove", "LineNrBelow", "FoldColumn", "EndOfBuffer", "StatusLine", "StatusLineNC", "WinBar", "WinBarNC", "TabLine", "TabLineFill", "TabLineSel", "NeoTreeNormal", "NeoTreeNormalNC", "NeoTreeEndOfBuffer", "NvimTreeNormal", "BufferLineFill", "BufferLine", "NormalFloat", "TermNormal", "TermNormalNC", "TermCursor"
-        }
-        for _, group in ipairs(groups_transparent) do
-          vim.api.nvim_set_hl(0, group, transparent)
-        end
-      end
-      set_transparent_separators()
-      vim.api.nvim_create_autocmd({ "ColorScheme", "WinNew", "BufWinEnter", "VimResized", "User" }, {
-        pattern = { "*", "Neotree*" },
-        callback = set_transparent_separators,
-        desc = "Força divisórias transparentes após eventos de janela/tema",
-      })
-    end,
   },
 
-  -- Oxocarbon colorscheme (dark, modern aesthetic similar to nyoom)
+  -- Aerial: desabilita backend treesitter (incompatível com Neovim recente)
+  {
+    "stevearc/aerial.nvim",
+    opts = {
+      backends = { "lsp", "markdown", "asciidoc", "man" },
+    },
+  },
+
+  -- Oxocarbon: tema oficial do nyoom-engineering (IBM Carbon design) — DEFAULT
   {
     "nyoom-engineering/oxocarbon.nvim",
+    lazy = false,
     priority = 1000,
+    init = function() vim.opt.background = "dark" end,
   },
 
   -- vim-be-good game plugin for Vim practice

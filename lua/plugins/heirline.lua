@@ -20,5 +20,6 @@ return {
       status.component.nav(),
     }
     opts.winbar = nil
+    opts.tabline = nil -- desabilita a barra de abas (tabline) — fica tudo colado no topo
   end,
 }
