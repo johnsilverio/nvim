@@ -77,7 +77,17 @@ return {
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
+    config = function()
+      require("lsp_signature").setup {
+        -- Não abrir a janela flutuante de assinatura automaticamente
+        -- (aquele box com "(*values: object, sep: str ...)" ao digitar print().
+        floating_window = false,
+        -- Sem hint de texto virtual inline também.
+        hint_enable = false,
+        -- Abra/feche a assinatura manualmente com <C-k> quando precisar.
+        toggle_key = "<C-k>",
+      }
+    end,
   },
 
   -- == Examples of Overriding Plugins ==

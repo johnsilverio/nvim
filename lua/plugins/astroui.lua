@@ -47,18 +47,29 @@ return {
         local purple = "#be95ff"
 
         return {
+          -- Fundo transparente no buffer de edição: deixa o gaussian blur do
+          -- compositor (Blur my Shell) aparecer atrás do código. Os painéis
+          -- flutuantes e pickers logo abaixo seguem SÓLIDOS de propósito, pra
+          -- não abrir mão do contraste onde há densidade de informação.
+          Normal = { fg = fg, bg = "NONE" },
+          NormalNC = { fg = fg, bg = "NONE" },
+          SignColumn = { bg = "NONE" },
+          EndOfBuffer = { fg = base03, bg = "NONE" },
+          FoldColumn = { bg = "NONE" },
+          MsgArea = { bg = "NONE" },
+
           -- Janelas flutuantes sem fundo destoante; borda fina e discreta
           NormalFloat = { fg = fg, bg = bg },
           FloatBorder = { fg = base02, bg = bg },
           FloatTitle = { fg = blue, bg = bg, bold = true },
 
           -- Separadores de janela bem sutis
-          WinSeparator = { fg = base02, bg = bg },
-          VertSplit = { fg = base02, bg = bg },
+          WinSeparator = { fg = base02, bg = "NONE" },
+          VertSplit = { fg = base02, bg = "NONE" },
 
           -- Números de linha e cursor
           CursorLineNr = { fg = blue, bold = true },
-          LineNr = { fg = base03, bg = bg },
+          LineNr = { fg = base03, bg = "NONE" },
 
           -- Comentários em itálico, discretos
           Comment = { fg = base03, italic = true },
