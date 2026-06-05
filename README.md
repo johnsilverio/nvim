@@ -1,10 +1,10 @@
 # my neovim config
 
-![Screenshot](./preview/Screenshot%202025-10-31%20002540.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/180a5fe8-bc1c-4e79-88be-997e9def0276" />
 
-this is my custom neovim configuration, based on astro nvim, with full transparency, modern ui, and custom keybindings.
+> this is my custom neovim configuration, with full transparency, modern ui, and custom keybindings.
 
-![Screenshot](./preview/Screenshot%202025-10-31%20001556.png)
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/5cd8173e-5a3f-4f96-86d0-463c2fd3ad33" />
 
 ## features
 - full window transparency
@@ -24,7 +24,6 @@ this is my custom neovim configuration, based on astro nvim, with full transpare
 | <leader>bd        | n    | close buffer from tabline         |
 | gD                | n    | go to declaration of symbol       |
 | <leader>uY        | n    | toggle lsp semantic highlight     |
-| :VimBeGood        | cmd  | start vim-be-good game            |
 | <leader>ff        | n    | find files (telescope/fzf)        |
 | <leader>fg        | n    | live grep (telescope/fzf)         |
 | <leader>e         | n    | open neotree file explorer        |
@@ -37,8 +36,6 @@ this is my custom neovim configuration, based on astro nvim, with full transpare
 | <leader>gr        | n    | go to references (lsp)            |
 | <leader>gi        | n    | go to implementation (lsp)        |
 | <leader>f         | n    | format file (lsp/none-ls)         |
-
-add your own screenshot above and update the table as you add more keybindings.
 
 ## credits
 - based on [astro nvim](https://github.com/AstroNvim/AstroNvim)
